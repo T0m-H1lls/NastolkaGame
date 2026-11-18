@@ -33,6 +33,8 @@ sealed class Program
                 s.AddTransient<MainWindowViewModel>();
                 s.AddTransient<MainWindow>();
                 s.AddTransient<GameRepository>();
+                s.AddTransient<AddWindowViewModel>();
+                s.AddTransient<AddWindow>();
 
             }).
             Build();
