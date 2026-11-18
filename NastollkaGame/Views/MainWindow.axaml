@@ -1,0 +1,98 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:NastollkaGame.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="NastollkaGame.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="NastollkaGame">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto * Auto">
+        <Border BorderThickness="1" BorderBrush="Black">
+            <Rectangle Fill="#1E1E1E" Height="50"/>
+        </Border> 
+        
+        
+        <Border Grid.Row="2" BorderThickness="1" BorderBrush="#121212" >
+            <Rectangle Fill="#1E1E1E" Height="20" />
+        </Border>
+        
+        <Grid ColumnDefinitions="Auto Auto Auto *">
+            
+            <Button Content="Добавить"
+                    CornerRadius="10"
+                    Background="#BB86FC"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                    Margin="10,0,0,0"/>
+            <Button Grid.Column="1" Content="Редактировать"
+                    CornerRadius="10"
+                    Background="#BB86FC"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                    Margin="10,0,0,0"/>
+            <Button Grid.Column="2" Content="Удалить"
+                    CornerRadius="10"
+                    Background="#BB86FC"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                    Margin="10,0,0,0"/>
+            
+            <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center" Foreground="AliceBlue" Text="Настольные игры" Margin="0,0,70,0"/>
+        </Grid>
+        
+        
+        <Grid Grid.Row="1" Background="#121212" RowDefinitions="Auto *">
+            
+            <TextBox PlaceholderText="Поиск" Width="350" HorizontalContentAlignment="Center" Text="{Binding SearchText}" HorizontalAlignment="Center"/>
+            
+            <ListBox Grid.Row="1" Background="#121212" WrapSelection="True" ItemsSource="{Binding Games}">
+                
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" ItemSpacing="10" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border CornerRadius="15" Background="White" BorderBrush="Bisque" BorderThickness="5" Padding="50">
+                            <Grid ColumnDefinitions="* *">
+                                <StackPanel  Spacing="30">
+                                    <TextBlock   Text="Название: "/>
+                                    <TextBlock  Text="Жанр: "/>
+                                    <TextBlock   Text="Кол-во часов: "/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Spacing="30">
+                                    <TextBlock  Text="{Binding Name}"/>
+                                    <TextBlock  Text="{Binding Genre}"/>
+                                    <TextBlock  Margin="20,0,0,0" Text="{Binding HoursPlayed}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+        </Grid>
+        
+        
+        
+        <Grid Grid.Row="2">
+            
+        </Grid>
+        
+    </Grid>
+    
+    
+    
+    
+</Window>
