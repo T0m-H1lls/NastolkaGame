@@ -22,39 +22,39 @@
         
         
         <Border Grid.Row="2" BorderThickness="1" BorderBrush="#121212" >
-            <Rectangle Fill="#1E1E1E" Height="20" />
+            <Rectangle Fill="#353C52" Height="20" />
         </Border>
         
         <Grid ColumnDefinitions="Auto Auto Auto *">
             
             <Button Content="Добавить"
                     CornerRadius="10"
-                    Background="#BB86FC"
+                    Background="#ac5045"
                     Height="40"
                     VerticalContentAlignment="Center"
                     Margin="10,0,0,0"/>
             <Button Grid.Column="1" Content="Редактировать"
                     CornerRadius="10"
-                    Background="#BB86FC"
+                    Background="#ac5045"
                     Height="40"
                     VerticalContentAlignment="Center"
                     Margin="10,0,0,0"/>
             <Button Grid.Column="2" Content="Удалить"
                     CornerRadius="10"
-                    Background="#BB86FC"
+                    Background="#ac5045"
                     Height="40"
                     VerticalContentAlignment="Center"
                     Margin="10,0,0,0"/>
             
-            <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center" Foreground="AliceBlue" Text="Настольные игры" Margin="0,0,70,0"/>
+            <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center" Foreground="#dcc9a9" Text="Настольные игры" Margin="0,0,70,0"/>
         </Grid>
         
         
-        <Grid Grid.Row="1" Background="#121212" RowDefinitions="Auto *">
+        <Grid Grid.Row="1" Background="#383737" RowDefinitions="Auto *">
             
             <TextBox PlaceholderText="Поиск" Width="350" HorizontalContentAlignment="Center" Text="{Binding SearchText}" HorizontalAlignment="Center"/>
             
-            <ListBox Grid.Row="1" Background="#121212" WrapSelection="True" ItemsSource="{Binding Games}">
+            <ListBox Grid.Row="1" Background="#383737" WrapSelection="True" ItemsSource="{Binding Games}">
                 
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -64,7 +64,7 @@
                 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border CornerRadius="15" Background="White" BorderBrush="Bisque" BorderThickness="5" Padding="50">
+                        <Border CornerRadius="15" Background="Bisque" BorderBrush="#dfa05d" BorderThickness="5" Padding="50">
                             <Grid ColumnDefinitions="* *">
                                 <StackPanel  Spacing="30">
                                     <TextBlock   Text="Название: "/>

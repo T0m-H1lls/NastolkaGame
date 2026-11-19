@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using NastollkaGame.DB.Repository;
 using NastollkaGame.Models;
+using NastollkaGame.Views;
 
 namespace NastollkaGame.ViewModels;
 
@@ -60,6 +61,14 @@ public partial class MainWindowViewModel : ViewModelBase
       }
    }
 
+   [RelayCommand]
+   void OpenAddWindow()
+   {
+      var window = _serviceProvider.GetRequiredService<AddWindow>();
+      var vm = ActivatorUtilities.CreateInstance<AddWindowViewModel>(_serviceProvider);
+      window.DataContext = vm;
+      window.Show();
+   }
 
    [RelayCommand]
    void DeleteGame()

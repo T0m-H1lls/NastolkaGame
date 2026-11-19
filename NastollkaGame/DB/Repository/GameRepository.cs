@@ -16,10 +16,10 @@ public class GameRepository:Base,IDisposable
     public List<Game> GetGames()
     {
         List<Game> games = new();
-        string sql = @"SELECT g.GameName,g2.Name,dp2.HoursPlayed  
-                        FROM DatePlayed dp2 
-                        JOIN Game g  on dp2.GameId  = g.id
-                        JOIN Genre g2 on g.GenreId  = g2.id ";
+        string sql = @"SELECT g.GameName,g2.Name,g.HoursPlayed   
+                        FROM DatePlayed dp 
+                        JOIN Game g on dp.GameId  = g.id 
+                        join Genre g2 on g.GenreId  = g2.id ";
         try
         {
             using (var cm = new MySqlCommand(sql, connection))
@@ -45,6 +45,28 @@ public class GameRepository:Base,IDisposable
         }
         return games;
     }
+
+    public bool AddGame(Game game)
+    {
+        string sql = @"INSERT INTO 'Game' VALUES (0,@GameName,@GenreId))";
+        try
+        {
+            using (var cm = new MySqlCommand(sql, connection))
+            {
+                cm.Parameters.AddWithValue("@GameName", game.Name);
+                cm.Parameters.AddWithValue("@GenreId", game.GenreId);
+                cm.ExecuteNonQuery();
+            }
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+        return false;
+    }
+    
     public void Dispose()
     {
         connection.Close();
